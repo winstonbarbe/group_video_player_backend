@@ -1,0 +1,5 @@
+{
+  id: video.id,
+  url: video.url,
+  updated_at: video.updated_at
+}

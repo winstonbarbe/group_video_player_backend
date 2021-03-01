@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+  before_action :current_user, except: [:create]
+
   def create
     user = User.new(
       email: params[:email],
@@ -11,5 +13,12 @@ class Api::UsersController < ApplicationController
       render json: { errors: user.errors.full_messages }, status: :bad_request
     end
   end
+
+  def show
+    @user = User.find(current_user.id)
+    render "show.json.jb"
+  end
+
+
 
 end
