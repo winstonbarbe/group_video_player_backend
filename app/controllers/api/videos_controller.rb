@@ -13,5 +13,15 @@ class Api::VideosController < ApplicationController
       render json: {errors: @video.errors.full_messages}, status: 422
     end
   end
+
+  def update
+    @video = Video.find(params[:id])
+    @video.update_count += 1
+    if @video.save
+      render "show.json.jb"
+    else
+      render json: {errors: @video.errors.full_messages}, status: 422
+    end
+  end
   
 end

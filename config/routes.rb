@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
     # Videos
     post "/videos" => "videos#create"
+    patch "/videos/:id" => "videos#update"
 
   end
 
