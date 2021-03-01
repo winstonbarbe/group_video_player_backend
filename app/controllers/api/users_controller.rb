@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :current_user, except: [:create]
+  # before_action :current_user, except: [:create]
 
   def create
     user = User.new(
@@ -15,7 +15,8 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
+    # @user = User.find(current_user.id)
     render "show.json.jb"
   end
 

@@ -1,5 +1,6 @@
 class Api::VideosController < ApplicationController
   before_action :current_user
+
   def create
     response = Cloudinary::Uploader.upload(params[:video], resource_type: :auto)
     puts response
