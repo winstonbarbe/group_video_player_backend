@@ -1,0 +1,1 @@
+render partial: "video.json.jb", locals: { video: @video }

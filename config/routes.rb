@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
     post "/sessions" => "sessions#create"
 
+    # Videos
+    post "/videos" => "videos#create"
+
   end
 
 end
