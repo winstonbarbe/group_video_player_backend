@@ -19,6 +19,13 @@ class Api::UsersController < ApplicationController
     render "show.json.jb"
   end
 
-
-
+  def destroy
+    user = User.find(params[:id])
+    if user == current_user
+      user.destroy
+      render json: { message: "account deleted, goodbye" }, status: 200
+    else
+      render json: { error: "unathorized" }, status: 422  
+    end
+  end
 end
