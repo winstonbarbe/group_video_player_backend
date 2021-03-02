@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     post "/sessions" => "sessions#create"
 
     # Videos
+    get "/videos" => "videos#index"
     post "/videos" => "videos#create"
     patch "/videos/:id" => "videos#update"
     delete "/videos/:id" => "videos#destroy"
