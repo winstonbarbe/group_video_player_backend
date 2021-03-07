@@ -7,13 +7,12 @@ class Api::VideosController < ApplicationController
   end
 
   def create
-    response = Cloudinary::Uploader.upload(params[:video], resource_type: :auto)
-    puts response
+    response = Cloudinary::Uploader.upload(params[:body], resource_type: :auto)
   
     cloudinary_url = response["secure_url"]
     public_id = response["public_id"]
     @video = Video.new(
-      user_id: current_user.id,
+      user_id: 3,
       url: cloudinary_url,
       public_id: public_id
     )
@@ -22,7 +21,7 @@ class Api::VideosController < ApplicationController
     else
       render json: {errors: @video.errors.full_messages}, status: 422
     end
-  end
+  end 
 
   def update
     @video = Video.find(params[:id])
