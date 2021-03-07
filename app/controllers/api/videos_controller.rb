@@ -10,11 +10,9 @@ class Api::VideosController < ApplicationController
     response = Cloudinary::Uploader.upload(params[:body], resource_type: :auto)
   
     cloudinary_url = response["secure_url"]
-    public_id = response["public_id"]
     @video = Video.new(
-      user_id: 3,
+      user_id: current_user.id,
       url: cloudinary_url,
-      public_id: public_id
     )
     if @video.save
       render "show.json.jb"
