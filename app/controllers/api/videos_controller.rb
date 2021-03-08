@@ -15,6 +15,7 @@ class Api::VideosController < ApplicationController
       url: cloudinary_url,
     )
     if @video.save
+      @user = current_user
       render "show.json.jb"
     else
       render json: {errors: @video.errors.full_messages}, status: 422
