@@ -10,9 +10,12 @@ class Api::VideosController < ApplicationController
     response = Cloudinary::Uploader.upload(params[:body], resource_type: :auto)
   
     cloudinary_url = response["secure_url"]
+    length = response["duration"]
     @video = Video.new(
       user_id: current_user.id,
       url: cloudinary_url,
+      length: length,
+      name: params[:name]
     )
     if @video.save
       @user = current_user

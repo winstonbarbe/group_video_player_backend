@@ -2,5 +2,6 @@
   id: video.id,
   url: video.url,
   updated_at: video.updated_at,
-  public_id: video.public_id
+  name: video.name,
+  length: video.length
 }
